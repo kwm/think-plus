@@ -1,0 +1,28 @@
+{
+    "name": "kwm/think-think-plus",
+    "description": "thinkphp6 优化修改版",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "iiQi",
+            "email": "i@yangqi.co"
+        }
+    ],
+    "require": {
+    	"php": ">=7.1.0",
+        "topthink/framework": "^6.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "thinkPlus\\": "src"
+        }
+    },
+    "extra": {
+        "think":{
+            "services":[
+                "thinkPlus\\Service"
+            ]
+        }
+    },    
+    "minimum-stability": "dev"
+}
