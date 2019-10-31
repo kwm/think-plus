@@ -1,5 +1,5 @@
 {
-    "name": "kwm/think-think-plus",
+    "name": "kwm/think-plus",
     "description": "thinkphp6 优化修改版",
     "license": "Apache-2.0",
     "authors": [
@@ -17,6 +17,9 @@
             "thinkPlus\\": "src"
         }
     },
+    "bin": [
+        "util/think-plus.sh"
+    ],
     "extra": {
         "think":{
             "services":[
