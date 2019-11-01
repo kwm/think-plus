@@ -17,9 +17,6 @@
             "thinkPlus\\": "src"
         }
     },
-    "bin": [
-        "util/think-plus.sh"
-    ],
     "extra": {
         "think":{
             "services":[
