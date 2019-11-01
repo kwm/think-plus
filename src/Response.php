@@ -3,6 +3,7 @@
 namespace thinkPlus;
 
 use think\Container;
+use think\Cookie;
 use think\facade\Config;
 use think\facade\Request;
 use think\Response as ThinkResponse;
@@ -14,6 +15,11 @@ class Response extends ThinkResponse
      * @var string 输出类型，为空是自动获取，可指定：json|jsonp|xml
      */
     protected $type = '';
+
+    public function __construct(Cookie $cookie)
+    {
+        $this->cookie = $cookie;
+    }
 
     /**
      * 创建Response对象
@@ -63,7 +69,7 @@ class Response extends ThinkResponse
     /**
      * 设置页面返回类型
      * @param $type
-     * @return \think\Response
+     * @return $this
      */
     public function type($type)
     {
@@ -95,7 +101,7 @@ class Response extends ThinkResponse
      * @author YangQi
      * @param string $method    方法名
      * @param array  $arguments 参数
-     * @return mixed|\think\Response
+     * @return mixed|$this|\think\Response
      */
     public function __call($method, $arguments)
     {
