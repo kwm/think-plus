@@ -9,8 +9,8 @@
         }
     ],
     "require": {
-    	"php": ">=7.1.0",
-        "topthink/framework": "^6.0.0"
+        "php": ">=7.1.0",
+        "topthink/framework": "6.0.x-dev"
     },
     "autoload": {
         "psr-4": {
@@ -18,11 +18,11 @@
         }
     },
     "extra": {
-        "think":{
-            "services":[
+        "think": {
+            "services": [
                 "thinkPlus\\Service"
             ]
         }
-    },    
+    },
     "minimum-stability": "dev"
 }
