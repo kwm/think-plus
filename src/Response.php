@@ -23,7 +23,6 @@ class Response extends ThinkResponse
 
     /**
      * 创建Response对象
-     * @author YangQi
      * @param string $data 输出数据
      * @param string $type 输出类型
      * @param int    $code 状态码
@@ -46,6 +45,7 @@ class Response extends ThinkResponse
      * @access protected
      * @param mixed $data 要处理的数据
      * @return mixed
+     * @throws
      */
     protected function output($data)
     {
@@ -101,7 +101,7 @@ class Response extends ThinkResponse
      * @author YangQi
      * @param string $method    方法名
      * @param array  $arguments 参数
-     * @return mixed|$this|\think\Response
+     * @return mixed|$this|ThinkResponse
      */
     public function __call($method, $arguments)
     {
