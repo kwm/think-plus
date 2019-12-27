@@ -5,6 +5,7 @@ namespace thinkPlus;
 class Service
 {
     public $bind = [
-        'response' => Response::class,
+        'response'                      => Response::class,
+        'think\fluent\event\RequestLog' => event\RequestLog::class,
     ];
 }
