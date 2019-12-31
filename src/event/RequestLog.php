@@ -16,6 +16,6 @@ class RequestLog extends RequestLogBase
     {
         $body = $response->getContent();
 
-        return $response->getType() == 'json' ? json_decode($body, true) : $body;
+        return method_exists($response, 'getType') && $response->getType() == 'json' ? json_decode($body, true) : $body;
     }
 }
