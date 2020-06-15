@@ -1,6 +1,6 @@
 {
     "name": "kwm/think-plus",
-    "description": "thinkphp6 优化修改版",
+    "description": "thinkphp5.0 优化修改版",
     "license": "Apache-2.0",
     "authors": [
         {
@@ -10,20 +10,7 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "topthink/framework": "^6.0.0",
-        "kwm/think-fluent": "^0.8"
-    },
-    "autoload": {
-        "psr-4": {
-            "thinkPlus\\": "src"
-        }
-    },
-    "extra": {
-        "think": {
-            "services": [
-                "thinkPlus\\Service"
-            ]
-        }
+        "topthink/framework": "^5.0.0"
     },
     "bin": [
         "util/think-plus.sh"

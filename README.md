@@ -1,2 +1,2 @@
 # think-plus
-ThinkPHP 优化修改版
+ThinkPHP 5.0 优化修改版

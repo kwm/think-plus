@@ -1,65 +1,13 @@
-diff --git a/src/think/response/View.php b/src/think/response/View.php
-index 0b1ae88c..36a3afe3 100644
---- a/src/think/response/View.php
-+++ b/src/think/response/View.php
-@@ -45,6 +45,12 @@ class View extends Response
+diff --git a/library/think/cache/driver/Redis.php b/library/think/cache/driver/Redis.php
+index 8956e774..7fb60b57 100644
+--- a/library/think/cache/driver/Redis.php
++++ b/library/think/cache/driver/Redis.php
+@@ -162,7 +162,7 @@ class Redis extends Driver
       */
-     protected $contentType = 'text/html';
- 
-+    /**
-+     * 模版文件名，默认使用控制器/方法同名模版
-+     * @var string
-+     */
-+    protected $template = '';
-+
-     /**
-      * View对象
-      * @var BaseView
-@@ -85,9 +91,24 @@ class View extends Response
-      */
-     protected function output($data): string
+     public function rm($name)
      {
-+        // 将控制器输出的数据，设置为视图变量
-+        $this->assign($data);
-+
-         // 渲染模板输出
-         return $this->view->filter($this->filter)
--            ->fetch($data, $this->vars, $this->isContent);
-+            ->fetch($this->template, $this->vars, $this->isContent);
-+    }
-+
-+    /**
-+     * 设置模版名称
-+     * @param string $template
-+     * @return Response
-+     */
-+    public function template ($template)
-+    {
-+        $this->template = $template;
-+
-+        return $this;
+-        return $this->handler->delete($this->getCacheKey($name));
++        return $this->handler->del($this->getCacheKey($name));
      }
  
      /**
-diff --git a/src/think/route/Dispatch.php b/src/think/route/Dispatch.php
-index c9775867..bd2c4bbe 100644
---- a/src/think/route/Dispatch.php
-+++ b/src/think/route/Dispatch.php
-@@ -102,15 +102,13 @@ abstract class Dispatch
-         if ($data instanceof Response) {
-             $response = $data;
-         } elseif (!is_null($data)) {
--            // 默认自动识别响应输出类型
--            $type     = $this->request->isJson() ? 'json' : 'html';
--            $response = Response::create($data, $type);
-+            $response = $this->app->response->create($data);
-         } else {
-             $data = ob_get_clean();
- 
-             $content  = false === $data ? '' : $data;
-             $status   = '' === $content && $this->request->isJson() ? 204 : 200;
--            $response = Response::create($content, 'html', $status);
-+            $response = $this->app->response->create($content, 'html', $status);
-         }
- 
-         return $response;
