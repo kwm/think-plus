@@ -2,5 +2,5 @@
 
 vendorPath=$(readlink -f "$(dirname "$0")/../")
 
-patch -N -p1 -d $vendorPath/topthink/framework < $vendorPath/kwm/think-plus/patch/think-plus.patch
-find $vendorPath/topthink/framework/ -name '*.rej' | xargs rm -f
+patch -N -p1 -d $vendorPath/../thinkphp < $vendorPath/kwm/think-plus/patch/think-plus.patch
+find $vendorPath/../thinkphp/ -name '*.rej' | xargs rm -f
