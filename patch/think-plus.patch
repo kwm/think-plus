@@ -1,5 +1,5 @@
 diff --git a/src/think/response/View.php b/src/think/response/View.php
-index 0b1ae88c..36a3afe3 100644
+index 0b1ae88c..eeaf1790 100644
 --- a/src/think/response/View.php
 +++ b/src/think/response/View.php
 @@ -45,6 +45,12 @@ class View extends Response
@@ -25,7 +25,7 @@ index 0b1ae88c..36a3afe3 100644
          // 渲染模板输出
          return $this->view->filter($this->filter)
 -            ->fetch($data, $this->vars, $this->isContent);
-+            ->fetch($this->template, $this->vars, $this->isContent);
++            ->fetch($this->template ?: (is_string($data) ? $data : ''), $this->vars, $this->isContent);
 +    }
 +
 +    /**
@@ -42,10 +42,10 @@ index 0b1ae88c..36a3afe3 100644
  
      /**
 diff --git a/src/think/route/Dispatch.php b/src/think/route/Dispatch.php
-index c9775867..bd2c4bbe 100644
+index 9884a476..e2fe8b5b 100644
 --- a/src/think/route/Dispatch.php
 +++ b/src/think/route/Dispatch.php
-@@ -102,15 +102,13 @@ abstract class Dispatch
+@@ -95,15 +95,13 @@ abstract class Dispatch
          if ($data instanceof Response) {
              $response = $data;
          } elseif (!is_null($data)) {
